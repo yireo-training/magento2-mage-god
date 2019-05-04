@@ -7,7 +7,8 @@ use Magento\Framework\Event\Collection as EventCollection;
 use Magento\Framework\Registry;
 
 use Magento\TestFramework\ObjectManager;
-use Magento\TestFramework\TestCase\AbstractController;
+
+use PHPUnit\Framework\TestCase;
 
 use Yireo\MageGod\Exception\NotImplementedException;
 use Yireo\MageGod\Mage;
@@ -16,7 +17,7 @@ use Yireo\MageGod\Mage;
  * Class MageTest
  * @package Yireo\MageGod\Test\Integration
  */
-class MageTest extends AbstractController
+class MageTest extends TestCase
 {
     /**
      * @var ObjectManager
@@ -26,7 +27,6 @@ class MageTest extends AbstractController
     protected function setUp()
     {
         $this->objectManager = ObjectManager::getInstance();
-        parent::setUp();
     }
 
     public function testGetVersion()
@@ -197,56 +197,59 @@ class MageTest extends AbstractController
 
     public function testException()
     {
-        $this->expectException(NotImplementedException::class);
-        Mage::getDesign();
+        $exception = Mage::exception(\Exception::class, '[TEST] exception', 9001);
+
+        $this->assertEquals('[TEST] exception', $exception->getMessage());
+        $this->assertEquals(9001, $exception->getCode());
+        $this->assertInstanceOf(\Exception::class, $exception);
     }
 
     public function testThrowException()
     {
         $this->expectException(NotImplementedException::class);
-        Mage::getDesign();
+        Mage::throwException('[TEST] exception message');
     }
 
     public function testApp()
     {
         $this->expectException(NotImplementedException::class);
-        Mage::getDesign();
+        Mage::app();
     }
 
     public function testInit()
     {
         $this->expectException(NotImplementedException::class);
-        Mage::getDesign();
+        Mage::init();
     }
 
     public function testRun()
     {
         $this->expectException(NotImplementedException::class);
-        Mage::getDesign();
+        Mage::run();
     }
 
     public function testIsInstalled()
     {
         $this->expectException(NotImplementedException::class);
-        Mage::getDesign();
+        Mage::isInstalled();
     }
 
     public function testLog()
     {
         $this->expectException(NotImplementedException::class);
-        Mage::getDesign();
+        Mage::log('[TEST] message');
     }
 
     public function testLogException()
     {
         $this->expectException(NotImplementedException::class);
-        Mage::getDesign();
+        Mage::logException(new \Exception);
     }
 
     public function testSetIsDeveloperMode()
     {
         $this->expectException(NotImplementedException::class);
-        Mage::getDesign();
+        Mage::setIsDeveloperMode('developer');
     }
 
     public function testGetIsDeveloperMode()
@@ -258,19 +261,24 @@ class MageTest extends AbstractController
     public function testPrintException()
     {
         $this->expectException(NotImplementedException::class);
-        Mage::getDesign();
+        Mage::printException(new \Exception);
     }
 
     public function testGetScriptSystemUrl()
     {
         $this->expectException(NotImplementedException::class);
-        Mage::getDesign();
+        Mage::getScriptSystemUrl('skin');
     }
 
     public function testSetIsDownloader()
     {
         $this->expectException(NotImplementedException::class);
-        Mage::getDesign();
+        Mage::setIsDownloader();
+    }
+
+    public function testIsFinal()
+    {
+        $this->assertTrue((new \ReflectionClass(Mage::class))->isFinal(), 'The class should be final');
     }
 }
 
