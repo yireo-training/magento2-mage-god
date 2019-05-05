@@ -29,7 +29,7 @@ use Yireo\MageGod\Exception\NotImplementedException;
  * Class Mage
  * @package Yireo\MageGod
  */
-class Mage
+final class Mage
 {
     /**
      * @return string
