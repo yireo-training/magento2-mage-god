@@ -1,6 +1,9 @@
 # Yireo MageGod
 Little package that re-introduces the Magento 1 `Mage` class back into Magento 2.
 
+## Disclaimer
+We do **NOT** recommend for this package to be used in the wild: This is an educational gimmick, not meant for real-life. You might say that a `Mage` class in M2 would make migration from M1 to M2 easier, but it does not: The M2 code is hugely different, that any M1 extension or theme or custom code needs to be rewritten. And we highly recommend to do this rewrite properly, taking advantage of the modern structure of M2. This `Mage` class is not part of that. It is just a joke. 
+
 ## Installation
 Run the following commands:
 
@@ -30,6 +33,3 @@ class Example
     }
 }
 ```
-
-## Sidenotes
-This might not be a very serious project.
