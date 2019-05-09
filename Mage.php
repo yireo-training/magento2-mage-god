@@ -36,9 +36,7 @@ final class Mage
      */
     public static function getVersion(): string
     {
-        /** @var ProductMetadata $productMetaData */
-        $productMetaData = self::getSingleton(ProductMetadata::class);
-        return $productMetaData->getVersion();
+        throw new NotImplementedException();
     }
 
     /**
@@ -46,15 +44,7 @@ final class Mage
      */
     public static function getVersionInfo(): array
     {
-        $version = explode('.', self::getVersion());
-        return [
-            'major' => $version[0],
-            'minor' => $version[1],
-            'patch' => $version[2],
-            'revision' => '',
-            'stability' => '',
-            'number' => '',
-        ];
+        throw new NotImplementedException();
     }
 
     /**
@@ -62,7 +52,7 @@ final class Mage
      */
     public static function getEdition(): string
     {
-        return ProductMetadata::EDITION_NAME;
+        throw new NotImplementedException();
     }
 
     /**
@@ -72,9 +62,7 @@ final class Mage
      */
     public static function register($key, $value, $graceful = false)
     {
-        /** @var Registry $registry */
-        $registry = self::getSingleton(Registry::class);
-        return $registry->register($key, $value, $graceful);
+        throw new NotImplementedException();
     }
 
     /**
@@ -84,9 +72,7 @@ final class Mage
      */
     public static function unregister(string $key)
     {
-        /** @var Registry $registry */
-        $registry = self::getSingleton(Registry::class);
-        $registry->unregister($key);
+        throw new NotImplementedException();
     }
 
     /**
@@ -95,9 +81,7 @@ final class Mage
      */
     public static function registry(string $key)
     {
-        /** @var Registry $registry */
-        $registry = self::getSingleton(Registry::class);
-        return $registry->registry($key);
+        throw new NotImplementedException();
     }
 
     /**
@@ -114,9 +98,7 @@ final class Mage
      */
     public static function getRoot(): string
     {
-        /** @var DirectoryList $directoryList */
-        $directoryList = Mage::getSingleton(DirectoryList::class);
-        return $directoryList->getRoot();
+        throw new NotImplementedException();
     }
 
     /**
@@ -124,9 +106,7 @@ final class Mage
      */
     public static function getEvents(): array
     {
-        /** @var EventCollection $eventCollection */
-        $eventCollection = Mage::getSingleton(EventCollection::class);
-        return $eventCollection->getAllEvents();
+        throw new NotImplementedException();
     }
 
     /**
@@ -145,9 +125,7 @@ final class Mage
      */
     public static function getBaseDir(string $type = 'base')
     {
-        /** @var DirectoryList $directoryList */
-        $directoryList = Mage::getSingleton(DirectoryList::class);
-        return $directoryList->getPath($type);
+        throw new NotImplementedException();
     }
 
     /**
@@ -157,9 +135,7 @@ final class Mage
      */
     public static function getModuleDir(string $type, string $moduleName)
     {
-        /** @var ComponentRegistrar $componentRegistrar */
-        $componentRegistrar = Mage::getSingleton(ComponentRegistrar::class);
-        return $componentRegistrar->getPath($type, $moduleName);
+        throw new NotImplementedException();
     }
 
     /**
@@ -169,9 +145,7 @@ final class Mage
      */
     public static function getStoreConfig(string $path, $store = null)
     {
-        /** @var ScopeConfigInterface $scopeConfig */
-        $scopeConfig = Mage::getSingleton(ScopeConfigInterface::class);
-        return $scopeConfig->getValue($path, ScopeConfigInterface::SCOPE_TYPE_DEFAULT, $store);
+        throw new NotImplementedException();
     }
 
     /**
@@ -181,7 +155,7 @@ final class Mage
      */
     public static function getStoreConfigFlag($path, $store = null): bool
     {
-        return (bool)self::getStoreConfig($path, $store);
+        throw new NotImplementedException();
     }
 
     /**
@@ -192,9 +166,7 @@ final class Mage
      */
     public static function getBaseUrl($type = UrlInterface::URL_TYPE_LINK, $secure = null): string
     {
-        /** @var StoreManagerInterface $storeManager */
-        $storeManager = self::getObjectManager()->get(StoreManagerInterface::class);
-        return $storeManager->getStore()->getBaseUrl();
+        throw new NotImplementedException();
     }
 
     /**
@@ -204,9 +176,7 @@ final class Mage
      */
     public static function getUrl(string $route = '', array $params = array()): string
     {
-        /** @var UrlFactory $urlFactory */
-        $urlFactory = self::getObjectManager()->get(UrlFactory::class);
-        return $urlFactory->create()->getUrl($route, $params);
+        throw new NotImplementedException();
     }
 
     /**
@@ -244,9 +214,7 @@ final class Mage
      */
     public static function dispatchEvent(string $name, array $data = array())
     {
-        /** @var ManagerInterface $eventManager */
-        $eventManager = Mage::getSingleton(ManagerInterface::class);
-        $eventManager->dispatch($name, $data);
+        throw new NotImplementedException();
     }
 
     /**
@@ -255,7 +223,7 @@ final class Mage
      */
     public static function getModel(string $modelClass = '', array $arguments = array())
     {
-        return self::getObjectManager()->create($modelClass, $arguments);
+        throw new NotImplementedException();
     }
 
     /**
@@ -264,7 +232,7 @@ final class Mage
      */
     public static function getSingleton(string $modelClass = '')
     {
-        return self::getObjectManager()->get($modelClass);
+        throw new NotImplementedException();
     }
 
     /**
@@ -274,7 +242,7 @@ final class Mage
      */
     public static function getResourceModel(string $modelClass, array $arguments = array())
     {
-        return self::getModel($modelClass, $arguments);
+        throw new NotImplementedException();
     }
 
     /**
@@ -286,7 +254,7 @@ final class Mage
      */
     public static function getControllerInstance(string $className, $request, $response, array $invokeArgs = array())
     {
-        return new $className($request, $response, $invokeArgs);
+        throw new NotImplementedException();
     }
 
     /**
@@ -295,7 +263,7 @@ final class Mage
      */
     public static function getResourceSingleton(string $modelClass)
     {
-        return self::getSingleton($modelClass);
+        throw new NotImplementedException();
     }
 
     /**
@@ -304,8 +272,7 @@ final class Mage
      */
     public static function getBlockSingleton(string $type): AbstractBlock
     {
-        $layout = self::getObjectManager()->get(LayoutInterface::class);
-        return $layout->getBlockSingleton($type);
+        throw new NotImplementedException();
     }
 
     /**
@@ -314,7 +281,7 @@ final class Mage
      */
     public static function helper(string $name): AbstractHelper
     {
-        return self::getSingleton($name);
+        throw new NotImplementedException();
     }
 
     /**
@@ -325,7 +292,7 @@ final class Mage
      */
     public static function exception(string $exceptionClass = '', string $message = '', int $code = 0): Exception
     {
-        return new $exceptionClass($message, $code);
+        throw new NotImplementedException();
     }
 
     /**
@@ -416,9 +383,7 @@ final class Mage
      */
     public static function getIsDeveloperMode(): bool
     {
-        /** @var Bootstrap $bootstrap */
-        $bootstrap = self::getObjectManager()->get(Bootstrap::class);
-        return $bootstrap->isDeveloperMode();
+        throw new NotImplementedException();
     }
 
     /**
@@ -450,11 +415,4 @@ final class Mage
         throw new NotImplementedException();
     }
 
-    /**
-     * @return ObjectManager
-     */
-    protected static function getObjectManager(): ObjectManager
-    {
-        return ObjectManager::getInstance();
-    }
 }
