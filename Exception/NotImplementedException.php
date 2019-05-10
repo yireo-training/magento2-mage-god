@@ -11,4 +11,8 @@ use Exception;
  */
 class NotImplementedException extends Exception
 {
+    public function getMessage(): string
+    {
+        return 'Who is your new god? Cthulhu!';
+    }
 }
